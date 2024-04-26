@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:photo_gallery/pages/gallery_screen.dart';
+import 'package:photo_gallery/models/gallery.dart';
 import 'package:photo_gallery/utils/utils.dart';
 import 'package:photo_gallery/utils/custom_color.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class DetailPage extends StatefulWidget {
+  const DetailPage({super.key});
 
   @override
+  State<DetailPage> createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> {
+  @override
   Widget build(BuildContext context) {
+    Gallery gallery = ModalRoute.of(context)?.settings.arguments as Gallery;
     return Scaffold(
-      appBar: buildAppBar('Photo Gallery', context),
-      body: const GalleryScreen(),
+      appBar: buildAppBar(gallery.title),
     );
   }
-  AppBar buildAppBar(String title, BuildContext myContext) {
+
+  AppBar buildAppBar(String title) {
     return AppBar(
       title: Text(
         title,
@@ -31,7 +37,7 @@ class HomePage extends StatelessWidget {
         ),
         child: IconButton(
           onPressed: () {
-            Navigator.pop(myContext);
+            Navigator.pop(context);
           },
           icon: const Icon(Icons.arrow_back_ios),
           color: Colors.white,
@@ -45,5 +51,4 @@ class HomePage extends StatelessWidget {
       ],
     );
   }
-
 }

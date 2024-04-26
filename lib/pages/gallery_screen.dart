@@ -1,8 +1,9 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:photo_gallery/models/dummy_data.dart';
+import 'package:photo_gallery/models/gallery.dart';
 import 'package:photo_gallery/utils/custom_color.dart';
+import 'package:photo_gallery/utils/routes.dart';
+
 
 class GalleryScreen extends StatelessWidget {
   const GalleryScreen({super.key});
@@ -16,7 +17,14 @@ class GalleryScreen extends StatelessWidget {
       padding: const EdgeInsets.all(5.0),
       children: List.generate(DummyData.getImages().length, (index) {
         return GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Gallery gallery = Gallery(
+              img: DummyData.getImages()[index].img,
+              title: DummyData.getImages()[index].title,
+            );
+            Navigator.pushNamed(context, Routes.detail.route,
+                arguments: gallery);
+          },
           child: Card(
             elevation: 8.0,
             shape: RoundedRectangleBorder(
