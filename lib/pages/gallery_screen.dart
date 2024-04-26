@@ -18,12 +18,8 @@ class GalleryScreen extends StatelessWidget {
       children: List.generate(DummyData.getImages().length, (index) {
         return GestureDetector(
           onTap: () {
-            Gallery gallery = Gallery(
-              img: DummyData.getImages()[index].img,
-              title: DummyData.getImages()[index].title,
-            );
             Navigator.pushNamed(context, Routes.detail.route,
-                arguments: gallery);
+                arguments: DummyData.getImages()[index]);
           },
           child: Card(
             elevation: 8.0,
@@ -38,8 +34,6 @@ class GalleryScreen extends StatelessWidget {
                   child: Image.asset(
                     DummyData.getImages()[index].img,
                     fit: BoxFit.cover,
-                    width: double.infinity,
-                    height: double.infinity,
                   ),
                 ),
                 // for title text

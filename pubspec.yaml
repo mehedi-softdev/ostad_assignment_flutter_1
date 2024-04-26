@@ -76,6 +76,9 @@ flutter:
     - family: Roboto
       fonts:
         - asset: assets/fonts/roboto.ttf
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppins.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
